@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <title>Holistic Capital Logo - Corrected Corner-to-Corner Geometric</title>
+  <desc>Clean geometric reconstruction. Grey C stays rounded; white C is layered above; central grey connector aligns exactly with the white C mouth from corner to corner with no gap.</desc>
+  <g id="holistic-capital-logo" shape-rendering="geometricPrecision">
+    <!-- Grey right C/H base: unchanged rounded C geometry behind -->
+    <polygon points="623.000000,182.000000 712.000000,150.000000 712.000000,452.500000 623.000000,452.500000" fill="#808080"/>
+    <polygon points="623.000000,625.500000 712.000000,625.500000 712.000000,930.000000 623.000000,898.000000" fill="#808080"/>
+    <path d="M 834.485692 510.000000 A 168.500000 168.500000 0 1 0 834.485692 568.000000 L 749.993865 568.000000 A 86.500000 86.500000 0 1 1 749.993865 510.000000 Z" fill="#808080"/>
+
+    <!-- Grey connector/belly exposed through the white C mouth. This is behind the white C, so it does not cut or flatten the grey C. -->
+    <path d="M 498.000 508.000 L 587.006 508.000 L 586.505 509.450 L 586.032 510.900 L 585.587 512.350 L 585.169 513.800 L 584.779 515.250 L 584.416 516.700 L 584.079 518.150 L 583.768 519.600 L 583.483 521.050 L 583.224 522.500 L 582.990 523.950 L 582.781 525.400 L 582.598 526.850 L 582.439 528.300 L 582.304 529.750 L 582.195 531.200 L 582.109 532.650 L 582.049 534.100 L 582.012 535.550 L 582.000 537.000 L 582.012 538.450 L 582.049 539.900 L 582.109 541.350 L 582.195 542.800 L 582.304 544.250 L 582.439 545.700 L 582.598 547.150 L 582.781 548.600 L 582.990 550.050 L 583.224 551.500 L 583.483 552.950 L 583.768 554.400 L 584.079 555.850 L 584.416 557.300 L 584.779 558.750 L 585.169 560.200 L 585.587 561.650 L 586.032 563.100 L 586.505 564.550 L 587.006 566.000 L 498.000 566.000 Z" fill="#808080"/>
+
+    <!-- White left C/H sits above the grey layer. Mouth uses the same top/bottom and left/right boundary as the connector for a seamless corner-to-corner join. -->
+    <polygon points="372.000000,273.000000 461.000000,240.000000 461.000000,450.000000 372.000000,450.000000" fill="#FFFFFF"/>
+    <polygon points="372.000000,623.000000 461.000000,623.000000 461.000000,838.000000 372.000000,805.000000" fill="#FFFFFF"/>
+    <path d="M 587.006135 508.000000 A 172.500000 172.500000 0 1 0 587.006135 566.000000 L 498.000000 566.000000 A 86.500000 86.500000 0 1 1 498.000000 508.000000 Z" fill="#FFFFFF"/>
+  </g>
+</svg>

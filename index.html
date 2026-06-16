@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Holistic Capital</title>
+<link rel="icon" type="image/svg+xml" href="/logo.svg" />
+<link rel="icon" type="image/png" href="/logo.png" />
 <!--
   HOLISTIC CAPITAL landing v7  (seed / experimental)
   v7 changes:
@@ -46,6 +48,17 @@
   @media(max-width:640px){ header{ padding:1rem 1.3rem; } .word{ font-size:18px; } }
   .word{ font-family:var(--display); font-size:22px; color:#fff; white-space:nowrap; text-shadow:0 1px 14px rgba(0,0,0,.45); transition:color .4s ease, text-shadow .4s ease; }
   .word .inf{ color:var(--blue-light); transition:color .4s ease; }
+  /* LOGO LOCKUP (mark + wordmark) */
+  .brand{ display:inline-flex; align-items:center; gap:11px; }
+  .brand-mark{ height:25px; width:auto; flex:0 0 auto; display:block; }
+  header .brand-mark{ color:#fff; transition:color .4s ease; }            /* fg follows currentColor */
+  header{ --mark-bg:#0e1f1c; }                                            /* notch colour over the dark hero */
+  header.solid{ --mark-bg:#ffffff; }                                     /* white header: original light-bg form */
+  header.solid .brand-mark{ color:var(--ink); }
+  header.menu-open{ --mark-bg:#ffffff; }
+  header.menu-open .brand-mark{ color:var(--ink); }
+  footer .brand-mark{ color:#fff; }
+  footer{ --mark-bg:var(--ink); }                                        /* notch matches footer background */
   header nav{ display:flex; gap:28px; align-items:center; font-family:var(--ui); font-size:14px; color:#fff; }
   header nav a:not(.btn){ text-shadow:0 1px 14px rgba(0,0,0,.45); transition:color .4s ease, text-shadow .4s ease; }
   @media(max-width:820px){ header nav a:not(.btn){ display:none; } }
@@ -248,9 +261,22 @@
 </head>
 <body>
 
+<!-- HC LOGO MARK (defined once; recoloured per context via currentColor + --mark-bg) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="hc-mark" viewBox="360 140 528 800">
+    <polygon points="623,182 712,150 712,452.5 623,452.5" fill="currentColor"/>
+    <polygon points="623,625.5 712,625.5 712,930 623,898" fill="currentColor"/>
+    <path d="M 834.485692 510 A 168.5 168.5 0 1 0 834.485692 568 L 749.993865 568 A 86.5 86.5 0 1 1 749.993865 510 Z" fill="currentColor"/>
+    <path d="M 498.000 508.000 L 587.006 508.000 L 586.505 509.450 L 586.032 510.900 L 585.587 512.350 L 585.169 513.800 L 584.779 515.250 L 584.416 516.700 L 584.079 518.150 L 583.768 519.600 L 583.483 521.050 L 583.224 522.500 L 582.990 523.950 L 582.781 525.400 L 582.598 526.850 L 582.439 528.300 L 582.304 529.750 L 582.195 531.200 L 582.109 532.650 L 582.049 534.100 L 582.012 535.550 L 582.000 537.000 L 582.012 538.450 L 582.049 539.900 L 582.109 541.350 L 582.195 542.800 L 582.304 544.250 L 582.439 545.700 L 582.598 547.150 L 582.781 548.600 L 582.990 550.050 L 583.224 551.500 L 583.483 552.950 L 583.768 554.400 L 584.079 555.850 L 584.416 557.300 L 584.779 558.750 L 585.169 560.200 L 585.587 561.650 L 586.032 563.100 L 586.505 564.550 L 587.006 566.000 L 498.000 566.000 Z" fill="currentColor"/>
+    <polygon points="372,273 461,240 461,450 372,450" fill="var(--mark-bg,#fff)"/>
+    <polygon points="372,623 461,623 461,838 372,805" fill="var(--mark-bg,#fff)"/>
+    <path d="M 587.006135 508 A 172.5 172.5 0 1 0 587.006135 566 L 498 566 A 86.5 86.5 0 1 1 498 508 Z" fill="var(--mark-bg,#fff)"/>
+  </symbol>
+</svg>
+
 <!-- HEADER -->
 <header id="hdr">
-  <div class="word"><span class="inf">∞</span> holistic capital</div>
+  <div class="word brand"><svg class="brand-mark" aria-hidden="true"><use href="#hc-mark"/></svg><span>holistic capital</span></div>
   <nav>
     <a href="#field">The Field</a>
     <a href="#eight">The Eight</a>
@@ -399,7 +425,7 @@
 <footer>
   <div class="wrap">
     <div class="top">
-      <div class="word"><span style="color:var(--blue-light)">∞</span> holistic capital</div>
+      <div class="word brand"><svg class="brand-mark" aria-hidden="true"><use href="#hc-mark"/></svg><span>holistic capital</span></div>
       <nav><a href="#field">The Field</a><a href="#eight">The Eight</a><a href="#hubs">The Hubs</a><a href="#events">Events</a><a href="#team">The Team</a><a href="#path">The Path</a><a href="#path">Become a Member</a></nav>
     </div>
     <div class="fine"><span>Wealth Is Wholeness.</span><span>holisticcapital.xyz</span></div>
