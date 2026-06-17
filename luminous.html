@@ -176,6 +176,27 @@
   footer{ background:var(--ink); color:rgba(255,255,255,.7); padding:60px 0; text-align:center; font-family:var(--ui); font-size:13px; }
   footer .word{ color:#fff; text-shadow:none; font-family:var(--display); font-size:18px; margin-bottom:10px; }
   .prov{ font-family:var(--ui); font-size:11px; color:var(--muted); text-align:center; padding:12px; }
+
+  /* GUIDES */
+  .guides{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:980px; margin:0 auto; }
+  @media(max-width:820px){ .guides{ grid-template-columns:1fr; max-width:440px; } }
+  .guide{ background:#fff; border:1px solid var(--hair); border-radius:20px; padding:30px 26px; box-shadow:0 12px 32px rgba(7,90,140,.07); text-align:center; }
+  .guide .pic{ width:104px; height:104px; margin:0 auto 16px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:0 8px 22px rgba(7,90,140,.16); }
+  .guide .pic img{ width:100%; height:100%; object-fit:cover; }
+  .guide b{ font-family:var(--display); font-weight:500; font-size:20px; display:block; }
+  .guide .role{ font-family:var(--ui); font-size:12.5px; letter-spacing:.03em; color:var(--blue-muted); margin:5px 0 13px; }
+  .guide p{ font-family:var(--ui); font-size:14px; color:var(--ink-soft); line-height:1.6; }
+
+  /* WITNESS (words from those who have sat with the guides) */
+  .witness{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:980px; margin:0 auto; }
+  @media(max-width:820px){ .witness{ grid-template-columns:1fr; max-width:560px; } }
+  .wq{ background:#fff; border:1px solid var(--hair); border-radius:20px; padding:30px 28px; box-shadow:0 12px 32px rgba(7,90,140,.07); display:flex; flex-direction:column; }
+  .wq blockquote{ font-family:var(--display); font-style:italic; font-size:19px; line-height:1.5; color:var(--ink); }
+  .wq .src{ font-family:var(--ui); font-size:13px; color:var(--blue-muted); margin-top:16px; }
+
+  /* GUARANTEE (risk reversal, in brand voice) */
+  .guarantee{ max-width:64ch; margin:36px auto 0; text-align:center; font-family:var(--ui); font-size:15px; line-height:1.65; color:var(--ink-soft); background:#fffdf7; border:1px solid #ecd9a8; border-radius:16px; padding:22px 28px; box-shadow:0 10px 30px rgba(7,90,140,.05); }
+  .guarantee b{ font-family:var(--display); font-weight:500; font-size:17px; color:var(--ink); }
 </style>
 </head>
 <body>
@@ -223,8 +244,35 @@
   </div>
 </section>
 
-<!-- WALK AWAY -->
+<!-- GUIDES -->
 <section class="block alt">
+  <div class="wrap">
+    <div class="sechead"><span class="eyebrow">Who Holds the Field</span><h2 class="h2c">Your Guides for the Two Days</h2></div>
+    <div class="guides">
+      <article class="guide">
+        <div class="pic"><img src="_team/mello.webp" alt="Mello Edwards"></div>
+        <b>Mello Edwards</b>
+        <div class="role">Spiritual Guide, Grower &amp; Retreat Creator</div>
+        <p>Mello has grown food for over fifty years and tended the inner life just as long. A spiritual guide and channel, author of <i>Awakening the Human Light Body</i> and creator of the Temple of Divine Love, he weaves Biodanza, ceremony, meditation and embodied practice into the room, holding space where the heart can open.</p>
+      </article>
+      <article class="guide">
+        <div class="pic"><img src="_team/gabriel.webp" alt="Gabriel Orrego"></div>
+        <b>Gabriel Orrego</b>
+        <div class="role">Founder &amp; Activator</div>
+        <p>The original activator of Holistic Capital, which grew from the GAOA Network he seeded. Gabriel connects people, projects and possibilities, and carries the fire of beginnings. He holds the living teaching of the eight forms of capital, the ground Luminous is built on.</p>
+      </article>
+      <article class="guide">
+        <div class="pic"><img src="_team/peter.webp" alt="Peter Low"></div>
+        <b>Peter Low</b>
+        <div class="role">Human Design Practitioner &amp; Meditation Teacher</div>
+        <p>A meditation teacher and Human Design practitioner with deep experience in breathwork, qigong and reality creation. An original member of the GAOA Network, Peter holds the witness and heart practices, and the quiet work of coming home to yourself.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- WALK AWAY -->
+<section class="block">
   <div class="wrap">
     <div class="sechead"><span class="eyebrow">The Gift</span><h2 class="h2c">What You Will Walk Away With</h2></div>
     <div class="walk">
@@ -239,7 +287,7 @@
 </section>
 
 <!-- TWO DAYS -->
-<section class="block" id="twodays">
+<section class="block alt" id="twodays">
   <span class="aura" style="width:560px;height:560px;right:-180px;top:60px;background:radial-gradient(circle,rgba(238,185,129,.28),transparent 70%)"></span>
   <div class="wrap">
     <div class="sechead"><span class="eyebrow">The Two Days</span><h2 class="h2c">How the Weekend Unfolds</h2></div>
@@ -273,7 +321,7 @@
 </section>
 
 <!-- EIGHT -->
-<section class="block alt" id="eight">
+<section class="block" id="eight">
   <div class="wrap">
     <div class="sechead"><span class="eyebrow">Built on the Eight Forms of Capital</span><h2 class="h2c">Wealth as Wholeness</h2><p class="body" style="margin-top:14px">Modern life measures wealth one way: money. Holistic Capital recognises eight, woven around relational capital at their centre. Each form is a fractal of the whole, holding all the others within it, and Luminous is built on every one.</p></div>
     <div class="eight-row">
@@ -295,11 +343,23 @@
 </section>
 
 <!-- WHO -->
-<section class="block">
+<section class="block alt">
   <div class="wrap narrow center">
     <span class="eyebrow">Who This Is For</span>
-    <p class="body mt">People who sense that something is missing from the modern story. Who have done some of the inner work and want to go deeper in real company. Who are drawn to authentic connection, conscious community, and a more regenerative way of living. If that lands, you already belong here.</p>
+    <p class="body mt">People who sense that something is missing from the modern story. Who have done some of the inner work and want to go deeper in real company. Who are drawn to real connection, conscious community, and a more regenerative way of living. If that lands, you already belong here.</p>
     <div class="sec-cta"><a class="btn" href="#reserve">Reserve Your Place</a></div>
+  </div>
+</section>
+
+<!-- WITNESS -->
+<section class="block">
+  <div class="wrap">
+    <div class="sechead"><span class="eyebrow">In Their Words</span><h2 class="h2c">From Those Who Have Sat With Mello</h2></div>
+    <div class="witness">
+      <figure class="wq"><blockquote>Attending Mello's retreats was a deeply transformative experience as I connected more deeply to my Divine Heart Space.</blockquote><figcaption class="src">Helen Paras</figcaption></figure>
+      <figure class="wq"><blockquote>Spending time with Mello felt truly special, like being in the presence of an elder soul carrying deep wisdom.</blockquote><figcaption class="src">Malindi Lovegrove</figcaption></figure>
+      <figure class="wq"><blockquote>My work with Mello truly opened my heart. Being in the group felt like I was held and supported.</blockquote><figcaption class="src">Dana Birdie</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -313,7 +373,7 @@
       <div class="dt"><div class="l">Format</div><div class="v">Two full days, non-residential</div></div>
       <div class="dt"><div class="l">Included</div><div class="v">All sessions and guided practices</div></div>
       <div class="dt"><div class="l">Bring</div><div class="v">Warm layers, water, a journal</div></div>
-      <div class="dt"><div class="l">Places</div><div class="v">Intentionally small, limited to 20</div></div>
+      <div class="dt"><div class="l">Places</div><div class="v">Intentionally small, twenty places, the size the room holds well</div></div>
     </div>
     <div class="sec-cta"><a class="btn" href="#reserve">Reserve Your Place</a></div>
   </div>
@@ -330,15 +390,15 @@
         <div class="price">$111</div>
         <div class="lead-line">By application, a gifted rate for someone deeply aligned, for whom cost is the only thing in the way.</div>
         <div class="rec">You Receive</div>
-        <ul><li>Your full place in the circle, both days</li><li>All sessions and practices</li><li>Entry into the ongoing community</li></ul>
+        <ul><li>Your place in the circle, both full days</li><li>Every session, practice and ceremony</li><li>Entry into the ongoing Circle that gathers after Luminous</li></ul>
       </div>
       <div class="tier feature">
         <div class="tag">Most Choose This</div>
         <div class="name">Standard</div>
         <div class="price">$333</div>
-        <div class="lead-line">Your place in the circle for both full days.</div>
+        <div class="lead-line">The whole of Luminous, your full place in the circle.</div>
         <div class="rec">You Receive</div>
-        <ul><li>Your full place in the circle, both days</li><li>All sessions and practices</li><li>Entry into the ongoing community</li></ul>
+        <ul><li>Your place in the circle, both full days</li><li>Every session, practice and ceremony: the embodiment dance journey, the heart and witness meditations, the blindfolded healing-field, eye gazing and the closing fire</li><li>The living Holistic Capital teaching, the eight forms of capital</li><li>Embodiment and heart-coherence practices you carry home</li><li>Entry into the ongoing Circle that gathers after Luminous</li></ul>
       </div>
       <div class="tier seed">
         <div class="tag">Seeds a Place</div>
@@ -346,7 +406,7 @@
         <div class="price">$888</div>
         <div class="lead-line">For those with the means and the heart to seed this gathering.</div>
         <div class="rec">You Receive</div>
-        <ul><li>Everything in Standard</li><li>A Supported place gifted in your name</li><li>A personal acknowledgement in the closing circle</li><li>First invitation to the next gathering</li></ul>
+        <ul><li>Everything in Standard</li><li>A Supported place gifted in your name, so someone aligned can be in the room</li><li>A personal acknowledgement in the closing circle</li><li>First invitation to the next gathering</li></ul>
       </div>
       <div class="tier seed">
         <div class="tag">One Place Only</div>
@@ -354,10 +414,11 @@
         <div class="price">$3,333</div>
         <div class="lead-line">For the one who helps carry the whole field into being.</div>
         <div class="rec">You Receive</div>
-        <ul><li>Everything in Patron</li><li>A personal capital-mapping session with a steward</li><li>Recognition as a Founding Contributor to Holistic Capital, honoured in the field's story</li><li>A standing invitation toward Founding Membership</li></ul>
+        <ul><li>Everything in Patron</li><li>A personal capital-mapping session with a steward</li><li>Recognition as a Founding Contributor to Holistic Capital, honoured in the field's story</li><li>A standing invitation toward Founding Membership of the Circle</li></ul>
       </div>
     </div>
     <p class="tier-note">This is the Eight Forms of Capital practised in real time: Financial Capital in service of community and regeneration. The Founding Patron place honours your contribution to this first gathering, and opens the door to Founding Membership of Holistic Capital as the Circle forms.</p>
+    <p class="guarantee"><b>Come and feel it.</b><br>If by the midday break on the first day you know this is not your path, let a steward know and we will return your contribution in full, with our blessing. There is no risk in saying yes.</p>
     <div class="sec-cta"><a class="btn" href="#reserve">Reserve Your Place</a></div>
   </div>
 </section>
