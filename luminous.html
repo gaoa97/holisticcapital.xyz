@@ -42,22 +42,30 @@
   @media(max-width:640px){ header{ padding:1.1rem 1.3rem; } .word{ font-size:18px; } }
   .word .inf{ color:#81d3ee; }
   /* LOGO LOCKUP (mark + wordmark) */
-  .brand{ display:inline-flex; align-items:center; gap:11px; }
-  .brand-mark{ height:24px; width:auto; flex:0 0 auto; display:block; }
-  header{ --mark-bg:#16282f; }                 /* notch colour over the dark hero */
-  header .brand-mark{ color:#fff; }
-  footer{ --mark-bg:var(--ink); }              /* notch matches footer background */
-  footer .brand-mark{ color:#fff; }
+  .brand{ display:inline-flex; align-items:center; gap:10px; }
+  .brand-mark{ height:36px; width:24px; flex:0 0 auto; display:block; }   /* explicit w+h: wordmark sits hard against the mark */
+  header{ --mark-bg:#ffffff; }                 /* white C over the dark hero */
+  header .brand-mark{ color:#808080; }         /* grey C: official two-tone, both read on the dark hero */
+  footer{ --mark-bg:#ffffff; }                 /* white C, reads on the dark footer */
+  footer .brand-mark{ color:#808080; }         /* grey C, reads on the dark footer */
   footer .word.brand{ justify-content:center; }
   header a.back{ font-family:var(--ui); font-size:14px; color:#fff; text-shadow:0 1px 14px rgba(0,0,0,.45); }
 
   /* HERO */
   .hero{ position:relative; min-height:100vh; display:flex; align-items:flex-start; justify-content:center; text-align:center;
-    background:#3a5a6a url('_events/lum-hero1.webp') center/cover no-repeat; }
-  .hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(10,24,32,.42),rgba(10,24,32,.12) 42%,rgba(10,24,32,.6)); }
+    background:#0f161f url('_events/luminous-a.webp') center/cover no-repeat; }
+  .hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(8,12,20,.5),rgba(8,12,20,.18) 42%,rgba(8,12,20,.66)); }
   .hero .inner{ position:relative; z-index:2; color:#fff; padding:15vh 24px 60px; max-width:900px; }
-  .hero .inf{ font-size:30px; color:#bfe6f5; display:block; margin-bottom:10px; text-shadow:0 2px 24px rgba(0,0,0,.4); }
-  .hero h1{ font-size:clamp(64px,12vw,150px); font-weight:300; margin:6px 0 16px; text-shadow:0 2px 50px rgba(0,0,0,.5); letter-spacing:.02em; }
+  .hero .inf{ font-size:30px; color:#ffe2a8; display:block; margin-bottom:10px; text-shadow:0 2px 24px rgba(0,0,0,.4); }
+  /* the word should be luminous: warm light, with a slow breathing glow */
+  .hero h1{ font-size:clamp(64px,12vw,150px); font-weight:300; margin:6px 0 16px; letter-spacing:.05em;
+    background:linear-gradient(180deg,#ffffff 0%,#fff4d8 46%,#ffd98a 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+    filter:drop-shadow(0 0 22px rgba(255,214,140,.55)) drop-shadow(0 0 60px rgba(255,190,90,.38)); }
+  @media(prefers-reduced-motion:no-preference){ .hero h1{ animation:lumglow 4.5s ease-in-out infinite; } }
+  @keyframes lumglow{
+    0%,100%{ filter:drop-shadow(0 0 18px rgba(255,214,140,.45)) drop-shadow(0 0 48px rgba(255,190,90,.30)); }
+    50%{ filter:drop-shadow(0 0 32px rgba(255,226,160,.78)) drop-shadow(0 0 84px rgba(255,200,110,.52)); } }
   .hero .subtitle{ font-family:var(--display); font-style:italic; font-size:clamp(20px,2.8vw,30px); color:rgba(255,255,255,.96); text-shadow:0 1px 24px rgba(0,0,0,.5); max-width:24ch; margin:0 auto; }
   .hero .meta{ margin-top:24px; font-family:var(--ui); letter-spacing:.16em; text-transform:uppercase; font-size:13px; color:rgba(255,255,255,.92); }
   .hero .acts{ margin-top:34px; }
