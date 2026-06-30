@@ -141,15 +141,29 @@
   .sec .h .eyebrow{ margin-bottom:16px; }
 
   /* THE EIGHT */
-  .mandala-row{ display:flex; gap:60px; align-items:center; }
-  @media(max-width:880px){ .mandala-row{ flex-direction:column; gap:40px; } }
-  .mandala{ width:min(440px,86vw); height:auto; flex:0 0 auto; border-radius:18px; filter:drop-shadow(0 24px 50px rgba(7,90,140,.16)); }
-  .caps{ display:grid; grid-template-columns:1fr 1fr; gap:16px 30px; }
-  @media(max-width:520px){ .caps{ grid-template-columns:1fr; } }
-  .cap{ display:flex; gap:14px; align-items:flex-start; }
-  .cap .sw{ width:24px; height:24px; border-radius:50%; flex:0 0 auto; margin-top:4px; background:var(--cc); box-shadow:0 0 0 5px color-mix(in srgb,var(--cc) 16%,transparent); }
-  .cap b{ font-weight:500; font-size:18px; display:block; }
-  .cap span{ font-family:var(--ui); font-size:14px; color:var(--ink-soft); line-height:1.55; }
+  .mandala-band{ background:#000; padding:62px 0; }
+  #eight .h{ margin-bottom:16px; }
+  .constellation{ display:grid; grid-template-columns:1fr auto 1fr; grid-template-areas:"living cultural experiential" "material image financial" "spiritual intellectual social" "relational relational relational"; gap:30px 44px; align-items:center; max-width:1140px; margin:0 auto; }
+  .constellation .mandala{ grid-area:image; width:min(400px,80vw); height:auto; display:block; }
+  .ccap{ display:flex; flex-direction:column; gap:3px; max-width:300px; }
+  .ccap .em{ font-size:18px; line-height:1; }
+  .ccap b{ font-weight:500; font-size:17px; color:#fff; display:block; }
+  .ccap .d{ font-family:var(--ui); font-size:13px; color:rgba(255,255,255,.66); line-height:1.5; }
+  .c-living{ grid-area:living; } .c-cultural{ grid-area:cultural; } .c-experiential{ grid-area:experiential; }
+  .c-material{ grid-area:material; } .c-financial{ grid-area:financial; }
+  .c-spiritual{ grid-area:spiritual; } .c-intellectual{ grid-area:intellectual; } .c-social{ grid-area:social; }
+  .c-relational{ grid-area:relational; }
+  .c-living, .c-material, .c-spiritual{ align-items:flex-end; text-align:right; justify-self:end; }
+  .c-experiential, .c-financial, .c-social{ align-items:flex-start; text-align:left; justify-self:start; }
+  .c-cultural, .c-intellectual{ align-items:center; text-align:center; justify-self:center; }
+  .c-relational{ align-items:center; text-align:center; justify-self:center; max-width:440px; margin-top:6px; padding-top:24px; border-top:1px solid rgba(255,255,255,.22); }
+  .c-relational .em{ font-size:22px; }
+  .c-relational .wf{ font-family:var(--ui); font-size:10.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--blue-light); }
+  .c-relational b{ font-size:20px; }
+  @media(max-width:820px){
+    .constellation{ grid-template-columns:1fr; grid-template-areas:"image" "living" "material" "cultural" "experiential" "financial" "social" "intellectual" "spiritual" "relational"; gap:22px; }
+    .constellation .ccap{ align-items:center; text-align:center; justify-self:center; max-width:340px; margin:0 auto; }
+  }
 
   /* HUBS */
   .cards{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto; }
@@ -337,19 +351,24 @@
 <section class="sec alt" id="eight">
   <div class="wrap">
     <div class="h reveal"><span class="eyebrow">The Eight, Woven</span><h2>Eight Forms of Capital, Woven Around Relational Capital</h2><p>At the centre is Relational Capital, the living field of trust and human connection that grows when Divine Love is practised, and from which every other form flourishes.</p></div>
-    <div class="mandala-row reveal">
-      <img class="mandala" src="eight-capitals-mandala.webp" alt="The Eight Forms of Capital woven around Relational Capital" />
-      <div class="caps">
-        <div class="cap"><span class="sw" style="--cc:var(--c-living)"></span><div><b>Living</b><span>Soil, water, forest, body: ecosystems coming back to life.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-spiritual)"></span><div><b>Spiritual</b><span>The unnameable centre, the reason any of it is worth tending.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-cultural)"></span><div><b>Cultural</b><span>Ritual, story, song: how a field remembers itself.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-material)"></span><div><b>Material</b><span>Land, tools, shelter: the made world we move through.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-financial)"></span><div><b>Financial</b><span>Money in its right place, one capital among eight.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-social)"></span><div><b>Social</b><span>Trust held between people. The current of being known.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-experiential)"></span><div><b>Experiential</b><span>What the body knows: wisdom earned through living.</span></div></div>
-        <div class="cap"><span class="sw" style="--cc:var(--c-intellectual)"></span><div><b>Intellectual</b><span>Ideas that grow as they are shared.</span></div></div>
+  </div>
+  <div class="mandala-band">
+    <div class="wrap">
+      <div class="constellation reveal">
+        <div class="ccap c-living"><span class="em">🟤</span><b>Living Capital</b><span class="d">Soil, water, forest, body. Ecosystems coming back to life.</span></div>
+        <div class="ccap c-cultural"><span class="em">🔴</span><b>Cultural Capital</b><span class="d">Ritual, story, song. How a field remembers itself.</span></div>
+        <div class="ccap c-experiential"><span class="em">🟠</span><b>Experiential Capital</b><span class="d">What the body knows. Wisdom earned through living.</span></div>
+        <div class="ccap c-material"><span class="em">⚫️</span><b>Material Capital</b><span class="d">Land, tools, shelter. The made world we move through.</span></div>
+        <img class="mandala" src="_path/eight-capitals-mandala.png" alt="The Eight Forms of Capital woven around Relational Capital" />
+        <div class="ccap c-financial"><span class="em">🟡</span><b>Financial Capital</b><span class="d">Money in its right place. One capital among eight.</span></div>
+        <div class="ccap c-spiritual"><span class="em">🟣</span><b>Spiritual Capital</b><span class="d">The unnameable centre. The reason any of it is worth tending.</span></div>
+        <div class="ccap c-intellectual"><span class="em">🔵</span><b>Intellectual Capital</b><span class="d">Ideas that grow as they are shared.</span></div>
+        <div class="ccap c-social"><span class="em">🟢</span><b>Social Capital</b><span class="d">Trust held between people. The current of being known.</span></div>
+        <div class="ccap c-relational whole"><span class="em">⚪️</span><span class="wf">The Whole Field</span><b>Relational Capital / Holistic Capital</b><span class="d">The centre that holds and connects them all.</span></div>
       </div>
     </div>
+  </div>
+  <div class="wrap">
     <div class="section-cta"><a class="btn" href="#path">Become a Member</a></div>
   </div>
 </section>
@@ -465,7 +484,7 @@
     {f:'gabriel.webp', n:'Gabriel Orrego', hd:'4/1 Sacral Generator', r:'Founder & Activator · The Connector', bio:'The original activator. Holistic Capital grew from the GAOA Network that Gabriel seeded, and he remains the one who connects the dots between people, projects, and possibilities. He holds the founder role lightly, in a holonic field where every person is a centre and the whole unfolds as ripples from relationship. Founder of The Tech Group, a professional athlete and lover of extreme sports, he carries the fire of beginnings, from Colombia.', s:[7,7,10,5,7,2,3,9]},
     {f:'peter.webp',   n:'Peter Low',      hd:'4/1 Self-Projected Projector', r:'Business & Marketing Advisor', bio:'Peter is a Human Design practitioner and meditation teacher, with deep experience in manifestation, reality creation, qigong, and breathwork. Through his advisory firm DTE Advisory he brings over a decade of business and marketing strategy to founders and creators, designing systems that let transformational work scale without losing its soul. An original member of the GAOA Network, he turns insight into clear and usable strategy.', s:[9,9,7,6,3,7,3,9]},
     {f:'mello.webp',   n:'Mello Edwards',  hd:'3/5 Sacral Generator', r:'Spiritual Guide, Organic Grower & Retreat Creator', bio:'Mello has grown food for over fifty years and tended the inner life just as long. He is a spiritual guide, a channel, and the author of Awakening the Human Light Body, as well as the creator of the Temple of Divine Love. A Biodanza facilitator who moves people through dance, he weaves channelling, ceremony, meditation, and embodied practice into everything the field gathers around, holding space where the heart can open.', s:[9,9,7,7,10,7,5,7]},
-    {f:'joel.webp',    n:'Joel Courtidis', hd:'5/1 Emotional Manifesting Generator', r:'Organic Grower & Permaculturalist', bio:'Joel is an organic grower, permaculturalist, and teacher of alchemy, with a mycelial mind that lights up at the hidden connections between traditions, systems, and living things. Through GoldenMonkey.Life he writes and works at the edge where diverse systems meet, teaching the inner alchemy that refines the monkey mind toward clarity, the way lead becomes gold. A breatharian and Kriya Yoga practitioner present since the GAOA era, he brings deep knowledge of the land.', s:[9,5,4,8,10,5,3,7]}
+    {f:'Joel.png',     n:'Joel Courtidis', hd:'5/1 Emotional Manifesting Generator', r:'Organic Grower, Permaculturalist & Alchemist', bio:'Joel is an organic grower, permaculturalist, alchemist, and storyteller, with a mycelial mind for hidden connections between traditions, systems, and living things. Through GoldenMonkey.Life, he teaches the inner alchemy of refining the monkey mind toward clarity, as lead becomes gold. Present since the GAOA era, he brings deep knowledge of the land, Living Capital through growing, and Cultural Capital through storytelling, bridging inner and outer gardens, mycelium and digital networks.', s:[9,5,4,8,10,5,3,7]}
   ];
   const tg=document.getElementById('teamGrid');
   team.forEach(t=>{ const bars=t.s.map((v,i)=>`<i style="height:${v*10}%;background:${cs8.getPropertyValue(CAPS8[i][1]).trim()}" title="${CAPS8[i][0]} ${v}"></i>`).join('');
