@@ -31,8 +31,11 @@ shared concern (header, brand lockup, button styles), it must be edited in **bot
 `index.html` and `luminous.html` to stay consistent.
 
 - `index.html` — main landing page (the Field, Eight Forms of Capital, Hubs, Team, join).
-- `luminous.html` — the Luminous event page (Genesis Gathering, 1–2 Aug 2026) with
-  Humanitix checkout + a Tally modal form (`aQlvJb`) for $111 Supported Places.
+- `luminous.html` — the Luminous event page (Genesis Gathering, 1–2 Aug 2026).
+  Registration is a Humanitix ticket purchase (all tiers, including the $111
+  Supported place — there is no separate "apply" step). Tally form `xXoZby` is the
+  *post-purchase* intake only: reserve → intake → team review → onboarding if
+  aligned, full refund if not. The Humanitix inline widget lives in `.checkout`.
 
 Folders prefixed with `_` (`_team`, `_people`, `_path`, `_events`, `_hubs`, `_walk`)
 hold **only optimized WebP/JPG image assets** — they are not Jekyll collections or
