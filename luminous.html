@@ -130,6 +130,10 @@
    - reserve buttons: smooth-scroll + re-align after lazy media settles, IG
      embed reserves 620px so hydration no longer shifts #reserve mid-jump;
      threshold scroll-margin for the fixed header
+
+  rev10 (2026-07-17, Peter): hero text fully above the fold on mobile —
+  arrival min-height uses 100svh where supported (100vh hides the tail
+  behind the URL bar) + tighter mobile h1/meta/assure spacing.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -173,12 +177,18 @@
 
   /* ============ 1 ARRIVAL ============ */
   .arrival{ position:relative; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; text-align:center; overflow:hidden; padding:0 20px 9vh; }
+  /* svh = the viewport with the mobile URL bar visible — keeps the whole
+     text block above the fold on load (100vh extends behind the bar) */
+  @supports (min-height:100svh){ .arrival{ min-height:100svh; } }
   .arrival video, .arrival .still{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(1.15) brightness(1.04); }
   .arrival .still{ background:url('_events/lum-light-poster.webp') center/cover; display:none; }
   @media(prefers-reduced-motion:reduce){ .arrival video{ display:none; } .arrival .still{ display:block; } }
   .arrival .scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,10,.34) 0%, rgba(20,16,10,.06) 34%, rgba(20,16,10,.1) 52%, rgba(20,16,10,.58) 100%); }
   @media(max-width:700px){ .arrival .scrim{ background:linear-gradient(180deg, rgba(20,16,10,.32) 0%, rgba(20,16,10,.1) 36%, rgba(20,16,10,.18) 58%, rgba(20,16,10,.58) 100%); }
-    .arrival .inner::before{ inset:-6% -10%; background:radial-gradient(62% 72% at 50% 52%, rgba(15,12,8,.5), transparent 76%); } }
+    .arrival .inner::before{ inset:-6% -10%; background:radial-gradient(62% 72% at 50% 52%, rgba(15,12,8,.5), transparent 76%); }
+    .arrival h1{ margin:1.5vh 0 2vh; }
+    .arrival .meta{ margin:2.5vh 0 3vh; }
+    .arrival .assure{ margin-top:22px; } }
   .arrival .inner{ position:relative; z-index:2; color:#fff; width:100%; }
   .arrival .inner::before{ content:""; position:absolute; inset:-10% -18%; z-index:-1;
     background:radial-gradient(58% 74% at 50% 52%, rgba(15,12,8,.44), transparent 74%); }
