@@ -119,6 +119,17 @@
   (interlocked strokes). Menu bar (scrolled) = ink + grey; hero + footer =
   white + grey (the swap Peter asked for). Socials "From the Field" moved to
   sit just above the threshold (Step Into the Field).
+
+  rev9 (2026-07-17, post-launch mobile bug reports):
+   - venue media WebKit-safe: no percentage heights inside auto grid rows
+     (older iOS resolved them to natural image size — giant photos spilling
+     over "How the Weekend Unfolds"). vgrid imgs now height:auto +
+     aspect-ratio, sunset video + food image absolute-fill in sized boxes
+   - Humanitix iframe carries its src in the HTML (widget script now only
+     resizes) so the checkout renders even if the script is blocked/fails
+   - reserve buttons: smooth-scroll + re-align after lazy media settles, IG
+     embed reserves 620px so hydration no longer shifts #reserve mid-jump;
+     threshold scroll-margin for the fixed header
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -286,21 +297,24 @@
   .venue .line{ font-family:var(--ui); font-size:16px; color:var(--ink-soft); max-width:54ch; margin:14px auto 0; line-height:1.75; }
   .vwrap{ display:grid; grid-template-columns:minmax(280px,380px) 1fr; gap:18px; align-items:stretch; }
   .vvideo{ position:relative; border-radius:22px; overflow:hidden; box-shadow:0 26px 70px rgba(7,90,140,.16); margin:0; background:#0e0e0e; }
-  .vvideo video{ width:100%; height:100%; object-fit:cover; display:block; aspect-ratio:9/16; }
+  /* absolute fill, not height:100% — percentage heights inside auto grid rows
+     blow up to the media's natural size on older iOS WebKit */
+  .vvideo video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .vvideo figcaption{ position:absolute; left:0; right:0; bottom:0; padding:44px 18px 14px; color:#fff; font-family:var(--ui); font-size:12px; letter-spacing:.1em; text-transform:uppercase; background:linear-gradient(180deg,transparent,rgba(10,10,8,.6)); pointer-events:none; }
   .vgrid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-  .vgrid img{ width:100%; height:100%; object-fit:cover; border-radius:18px; display:block; box-shadow:0 14px 36px rgba(7,90,140,.12); aspect-ratio:1/1; }
+  .vgrid img{ width:100%; height:auto; object-fit:cover; border-radius:18px; display:block; box-shadow:0 14px 36px rgba(7,90,140,.12); aspect-ratio:1/1; }
   .vgrid img.wide{ grid-column:1/-1; aspect-ratio:16/9.5; }
   .vfood{ display:grid; grid-template-columns:1fr 1.05fr; gap:0; align-items:stretch; margin-top:18px; background:#fbf6ec; border-radius:22px; overflow:hidden; box-shadow:0 18px 50px rgba(7,90,140,.10); }
-  .vfood img{ width:100%; height:100%; object-fit:cover; display:block; min-height:280px; }
+  .vfood .fimg{ position:relative; min-height:280px; }
+  .vfood .fimg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
   .vfood .ft{ padding:44px 38px; display:flex; flex-direction:column; justify-content:center; text-align:left; }
   .vfood h3{ font-weight:400; font-size:clamp(24px,3vw,34px); margin:10px 0 12px; }
   .vfood p{ font-family:var(--ui); font-size:15px; color:var(--ink-soft); line-height:1.7; }
   @media(max-width:860px){
     .vwrap{ grid-template-columns:1fr; }
-    .vvideo{ max-width:420px; margin:0 auto; width:100%; }
+    .vvideo{ max-width:420px; margin:0 auto; width:100%; aspect-ratio:9/16; }
     .vfood{ grid-template-columns:1fr; }
-    .vfood img{ max-height:340px; }
+    .vfood .fimg{ height:clamp(230px, 72vw, 340px); min-height:0; }
     .vfood .ft{ padding:30px 24px 36px; }
   }
   @media(max-width:640px){
@@ -314,7 +328,9 @@
   .socials h2{ font-weight:300; font-size:clamp(30px,4.4vw,52px); margin-top:14px; }
   .socials .line{ font-family:var(--ui); font-size:15.5px; color:var(--ink-soft); margin-top:12px; }
   .reels{ display:flex; flex-wrap:wrap; justify-content:center; gap:22px; margin-top:6vh; }
-  .reels .instagram-media{ background:#fff; border:1px solid var(--hair) !important; border-radius:18px !important; box-shadow:0 18px 44px rgba(7,90,140,.10) !important; margin:0 !important; min-width:300px !important; max-width:360px !important; width:100% !important; }
+  /* min-height reserves the embed's space up front, so hydration doesn't
+     shift the checkout section below and break #reserve jumps */
+  .reels .instagram-media{ background:#fff; border:1px solid var(--hair) !important; border-radius:18px !important; box-shadow:0 18px 44px rgba(7,90,140,.10) !important; margin:0 !important; min-width:300px !important; max-width:360px !important; width:100% !important; min-height:620px !important; }
   .reels blockquote a{ display:flex; align-items:center; justify-content:center; min-height:440px; font-family:var(--ui); font-size:14px; color:var(--blue-deep); }
 
   /* ============ 7c THE WORDS ============ */
@@ -359,7 +375,7 @@
   #embers{ position:fixed; inset:0; z-index:8; pointer-events:none; opacity:0; }
 
   /* ============ 9 THE THRESHOLD ============ */
-  .threshold{ position:relative; padding:16vh 24px 10vh; text-align:center;
+  .threshold{ position:relative; scroll-margin-top:70px; padding:16vh 24px 10vh; text-align:center;
     background:radial-gradient(70% 50% at 50% 0%, #fbf3e6 0%, var(--canvas) 60%); }
   .threshold h2{ font-weight:300; font-size:clamp(32px,4.6vw,54px); max-width:18ch; margin:14px auto 0; }
   .threshold .line{ font-family:var(--ui); font-size:15.5px; color:var(--ink-soft); max-width:58ch; margin:22px auto 0; line-height:1.75; }
@@ -455,7 +471,7 @@
     </div>
   </div>
   <div class="vfood">
-    <img src="_venue/bz-food.webp" alt="An abundant organic grazing table at Banyula Zen." loading="lazy" decoding="async" />
+    <div class="fimg"><img src="_venue/bz-food.webp" alt="An abundant organic grazing table at Banyula Zen." loading="lazy" decoding="async" /></div>
     <div class="ft">
       <span class="kicker" style="color:var(--blue-deep)">Nourished by the Land</span>
       <h3>Organic, Fully Catered</h3>
@@ -632,7 +648,9 @@
     <p>A limited number of Supported Places ($111) are offered by application, for those who are deeply aligned and for whom cost is the only thing in the way.</p>
     <button class="btn" data-tally-open="aQlvJb" data-tally-layout="modal" data-tally-width="560">Apply for a Supported Place</button>
   </div>
-  <div class="checkout"><iframe data-checkout="luminous-holistic-capital" title="Reserve your place at Luminous"></iframe></div>
+  <!-- src is set directly so tickets load even if the Humanitix widget script
+       is blocked or fails; the script only takes over height-resizing -->
+  <div class="checkout"><iframe src="https://events.humanitix.com/luminous-holistic-capital/tickets?widget=checkout" data-checkout="luminous-holistic-capital" allow="payment" title="Reserve your place at Luminous"></iframe></div>
   <p class="prov">Luminous is a gathering for connection, embodiment and community. It is not a therapeutic, psychological, psychiatric, or medical service, and is not a substitute for professional care.</p>
 </section>
 
@@ -654,6 +672,39 @@
   var hd = document.getElementById('hd');
   function onScroll(){ hd.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.8); }
   window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+  /* reserve buttons: media above #reserve can finish loading after the jump
+     and shift the target — scroll smoothly, then re-align once settled */
+  document.querySelectorAll('a[href="#reserve"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.getElementById('reserve');
+      if (!t || !t.scrollIntoView) return;
+      e.preventDefault();
+      var moved = false, ro = null;
+      function mark(){ moved = true; if (ro) ro.disconnect(); }
+      ['wheel','touchstart','keydown'].forEach(function(ev){
+        window.addEventListener(ev, mark, { passive:true, once:true });
+      });
+      function go(){
+        var top = t.getBoundingClientRect().top + window.scrollY - 70;
+        try { window.scrollTo({ top: top, behavior: 'smooth' }); }
+        catch (err) { window.scrollTo(0, top); }
+      }
+      function realign(){
+        if (!moved && Math.abs(t.getBoundingClientRect().top - 70) > 30) go();
+      }
+      go();
+      /* the IG embed above hydrates only once the scroll passes it, resizing
+         the page seconds after the click — chase every late height change
+         (for up to 9s) instead of guessing when it happens */
+      if ('ResizeObserver' in window) {
+        ro = new ResizeObserver(function(){ requestAnimationFrame(realign); });
+        ro.observe(document.body);
+        setTimeout(function(){ if (ro) ro.disconnect(); }, 9000);
+      }
+      [1500, 3000].forEach(function(ms){ setTimeout(realign, ms); });
+    });
+  });
 
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
