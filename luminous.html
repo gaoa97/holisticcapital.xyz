@@ -13,6 +13,22 @@
 <meta property="og:url" content="https://www.holisticcapital.xyz/luminous" />
 <meta property="og:image" content="https://www.holisticcapital.xyz/_events/lum-light-poster.webp" />
 <meta name="twitter:card" content="summary_large_image" />
+<script>
+/* Google Analytics 4. Set the measurement ID here (the same ID also goes
+   into Humanitix under Advanced > Integrations, which adds begin_checkout
+   and purchase events). While it is empty, nothing loads or fires. */
+var HCC_GA4_ID = '';
+(function(){
+  if (!HCC_GA4_ID) return;
+  var s = document.createElement('script');
+  s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + HCC_GA4_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', HCC_GA4_ID);
+})();
+</script>
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 <link rel="icon" type="image/png" href="/logo.png" />
 <link rel="apple-touch-icon" href="/logo.png" />
@@ -147,6 +163,11 @@
   rev11 (2026-07-17, full-site audit): meta description + canonical + og/
   twitter tags (WhatsApp link previews use the hero poster); arrival video
   play() promise rejection silenced.
+
+  rev12 (2026-07-17): Google Analytics 4 wiring, dormant until HCC_GA4_ID
+  (head snippet) is set. Site events: reserve_click, apply_supported_place,
+  checkout_view. Humanitix adds begin_checkout/purchase via its own GA
+  integration (Advanced > Integrations, same measurement ID).
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -703,6 +724,7 @@
       var t = document.getElementById('reserve');
       if (!t || !t.scrollIntoView) return;
       e.preventDefault();
+      if (window.gtag) gtag('event', 'reserve_click');
       var moved = false, ro = null;
       function mark(){ moved = true; if (ro) ro.disconnect(); }
       ['wheel','touchstart','keydown'].forEach(function(ev){
@@ -728,6 +750,20 @@
       [1500, 3000].forEach(function(ms){ setTimeout(realign, ms); });
     });
   });
+
+  /* funnel events (no-ops until HCC_GA4_ID is set) */
+  document.querySelectorAll('[data-tally-open]').forEach(function(b){
+    b.addEventListener('click', function(){ if (window.gtag) gtag('event', 'apply_supported_place'); });
+  });
+  var co = document.querySelector('.checkout');
+  if (co && 'IntersectionObserver' in window) {
+    var coSeen = new IntersectionObserver(function(es){
+      es.forEach(function(en){
+        if (en.isIntersecting) { if (window.gtag) gtag('event', 'checkout_view'); coSeen.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    coSeen.observe(co);
+  }
 
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
