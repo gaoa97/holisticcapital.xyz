@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Luminous, the Genesis Gathering of Holistic Capital</title>
+<meta name="description" content="Luminous, the Genesis Gathering of Holistic Capital. Wealth is wholeness. 1 &amp; 2 August 2026 at Banyula Zen, Doonan QLD. 20 places." />
+<link rel="canonical" href="https://www.holisticcapital.xyz/luminous" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Holistic Capital" />
+<meta property="og:title" content="Luminous, the Genesis Gathering of Holistic Capital" />
+<meta property="og:description" content="Wealth is wholeness. 1 &amp; 2 August 2026 at Banyula Zen, Doonan QLD. 20 places." />
+<meta property="og:url" content="https://www.holisticcapital.xyz/luminous" />
+<meta property="og:image" content="https://www.holisticcapital.xyz/_events/lum-light-poster.webp" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 <link rel="icon" type="image/png" href="/logo.png" />
 <link rel="apple-touch-icon" href="/logo.png" />
@@ -134,6 +143,10 @@
   rev10 (2026-07-17, Peter): hero text fully above the fold on mobile —
   arrival min-height uses 100svh where supported (100vh hides the tail
   behind the URL bar) + tighter mobile h1/meta/assure spacing.
+
+  rev11 (2026-07-17, full-site audit): meta description + canonical + og/
+  twitter tags (WhatsApp link previews use the hero poster); arrival video
+  play() promise rejection silenced.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -805,7 +818,7 @@
 
     /* pause the arrival video offscreen */
     if (video) ScrollTrigger.create({ trigger:'.arrival', start:'top bottom', end:'bottom top',
-      onToggle:function(self){ try { self.isActive ? video.play() : video.pause(); } catch(e){} } });
+      onToggle:function(self){ try { if (self.isActive) { var pp = video.play(); if (pp && pp.catch) pp.catch(function(){}); } else { video.pause(); } } catch(e){} } });
 
     return function(){};
   });

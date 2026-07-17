@@ -4,6 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Holistic Capital</title>
+<meta name="description" content="Holistic Capital. Remember every kind of wealth. A living field where land meets sea, and a circle gathers around the eight forms of capital." />
+<link rel="canonical" href="https://www.holisticcapital.xyz/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Holistic Capital" />
+<meta property="og:title" content="Holistic Capital" />
+<meta property="og:description" content="Remember every kind of wealth. A living field where land meets sea, and a circle gathers around the eight forms of capital." />
+<meta property="og:url" content="https://www.holisticcapital.xyz/" />
+<meta property="og:image" content="https://www.holisticcapital.xyz/_path/eight-capitals-mandala.webp" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 <link rel="icon" type="image/png" href="/logo.png" />
 <link rel="apple-touch-icon" href="/logo.png" />
@@ -226,9 +235,11 @@
   .road{ max-width:880px; margin:0 auto; display:flex; flex-direction:column; gap:22px; }
   .rstep{ display:grid; grid-template-columns:300px 1fr; align-items:stretch; background:#fff; border:1px solid var(--hair); border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(7,90,140,.06); }
   @media(max-width:680px){ .rstep{ grid-template-columns:1fr; } }
-  .rimg{ min-height:210px; }
-  .rimg img{ width:100%; height:100%; object-fit:cover; display:block; }
-  @media(max-width:680px){ .rimg{ min-height:0; } .rimg img{ height:200px; } }
+  /* absolute fill, not height:100% — percentage heights inside auto grid rows
+     blow up to the image's natural size on older iOS/macOS WebKit */
+  .rimg{ min-height:210px; position:relative; }
+  .rimg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  @media(max-width:680px){ .rimg{ min-height:0; height:200px; } }
   .rtext{ padding:30px 34px; align-self:center; }
   @media(max-width:680px){ .rtext{ padding:24px 24px 28px; } }
   .rhead{ display:flex; align-items:center; gap:14px; }
